@@ -227,3 +227,58 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const welcomeSection = document.getElementById('welcome');
+    
+    // Funkcija koja proverava kada je sekcija u vidljivom delu ekrana
+    function checkVisibility() {
+        const rect = welcomeSection.getBoundingClientRect();
+        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+            welcomeSection.classList.add('visible');
+        }
+    }
+    
+    // Pozivamo funkciju odmah nakon učitavanja stranice
+    checkVisibility();
+
+    // Dodajemo listener za skrolovanje
+    window.addEventListener('scroll', checkVisibility);
+});
+document.addEventListener('scroll', function() {
+    const welcomeSection = document.getElementById('welcome');
+    const scrollPosition = window.scrollY;
+    const offset = scrollPosition * 0.5; // Brzina pomeranja pozadine, možete prilagoditi broj
+
+    welcomeSection.style.backgroundPosition = `center ${offset}px`;  // Pomeranje pozadinske slike
+});
+document.addEventListener('scroll', function() {
+    const welcomeSection = document.getElementById('welcome');
+    const scrollPosition = window.scrollY;
+    const offset = scrollPosition * 0.7;  // Podesi brzinu pomeranja
+
+    // Menjaj pozadinsku poziciju na osnovu skrolovanja
+    welcomeSection.style.backgroundPosition = `center ${offset}px`;
+});
+
+
+// Kada korisnik klikne na "Početna" link, ponovo pokreni animaciju sekcije #welcome
+document.getElementById('homeLink').addEventListener('click', function(e) {
+    e.preventDefault();  // Sprečava podrazumevano ponašanje (skakanje do sekcije)
+    
+    const welcomeSection = document.getElementById('welcome');
+    
+    // Ukloni klasu 'visible' (ako postoji) koja je možda već postavljena
+    welcomeSection.classList.remove('visible');
+    
+    // Kratak timeout kako bi omogućili uklanjanje klasa pre ponovnog dodavanja
+    setTimeout(() => {
+        // Ponovno dodajemo klasu 'visible' koja pokreće animaciju
+        welcomeSection.classList.add('visible');
+        
+        // Skroluj do sekcije sa glatkim pomeranjem
+        window.scrollTo({
+            top: welcomeSection.offsetTop - 100, // Pomera za 100px iznad sekcije
+            behavior: 'smooth'  // Glatko skrolovanje
+        });
+    }, 1000);  // Odlaganje od 500ms kako bi efekat bio vidljiviji
+});

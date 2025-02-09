@@ -411,6 +411,7 @@ a:hover {
     transform: translateY(0); /* Slike se pomeraju u svoj originalni položaj */
 }
 /* Stil za sekciju "Naši radovi" */
+/* Stil za sekciju "Naši radovi" */
 #nasi-radovi {
     background-color: #f9f9f9; /* Svetla pozadina */
     padding: 40px 20px;
@@ -419,6 +420,7 @@ a:hover {
     margin-bottom: 100px;
 }
 
+/* Naslov sekcije "Naši radovi" */
 #nasi-radovi h2 {
     font-size: 2.5rem;
     text-align: center;
@@ -426,39 +428,57 @@ a:hover {
     color: #333;
 }
 
+/* Galerija slika sa grid rasporedom */
 .gallery-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Dinamičan grid raspored */
-    gap: 20px;
-    justify-items: center; /* Poravnanje slika u centar */
+    grid-template-columns: repeat(3, 1fr); /* 3 slike u redu */
+    gap: 20px; /* Razmak između slika */
+    justify-items: center; /* Centriranje slika unutar grid stavki */
 }
 
+/* Svaka slika u galeriji */
 .gallery-item {
-    width: 100%;  /* Slike će zauzimati 100% širine svog kontejnera */
+    width: 100%; /* Slike zauzimaju 100% širine svog kontejnera */
     height: auto;
     border-radius: 8px;
     overflow: hidden; /* Skriva sve što izlazi iz okvira */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Suptilna senka oko slika */
-    transition: transform 0.3s ease; /* Glatka animacija prilikom hover efekta */
+    transition: transform 0.3s ease; /* Glatka animacija pri hover-u */
 }
 
 .gallery-item img {
-    width: 100%;
+    width: 100%; /* Slike zauzimaju 100% širine svog kontejnera */
     height: 100%;
-    object-fit: cover; /* Obezbeđuje da slike popune celu dimenziju bez distorzije */
+    object-fit: cover; /* Slike će popuniti svoj prostor bez distorzije */
     border-radius: 8px; /* Zaobljeni uglovi za slike */
 }
 
+/* Hover efekat na slike - uvećanje pri prelasku mišem */
 .gallery-item:hover {
     transform: scale(1.05); /* Uvećava sliku pri hover-u */
 }
 
-/* Stil za mobilne uređaje */
+/* Media query za mobilne uređaje */
 @media (max-width: 768px) {
     .gallery-container {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Manji raspored za mobilne uređaje */
+        grid-template-columns: repeat(2, 1fr); /* 2 slike u redu na manjim ekranima */
+    }
+
+    .gallery-item img {
+        height: 250px; /* Smanjena visina slika na manjim ekranima */
     }
 }
+
+@media (max-width: 480px) {
+    .gallery-container {
+        grid-template-columns: 1fr; /* 1 slika u redu na još manjim ekranima */
+    }
+
+    .gallery-item img {
+        height: 200px; /* Još manja visina slika na vrlo malim ekranima */
+    }
+}
+
 
 /* Stil za modal (prozor) */
 .modal {
@@ -511,4 +531,146 @@ a:hover {
 /* Omogućavanje glatkog pomeranja stranice */
 html {
     scroll-behavior: smooth;
+}
+/* Stil za sekciju dobrodošlice */
+/* Sekcija #welcome sa animacijom */
+/* Stil za sekciju dobrodošlice */
+/* Stil za sekciju dobrodošlice */
+#welcome {
+    position: relative;
+    background-image: url('naslovna.jpg');
+    background-size: cover;
+    background-position: center center;
+    height: 60vh;  /* Visina sekcije */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    overflow: hidden;
+    margin-top: 100px;  /* Uklanjanje razmaka između menija i sekcije */
+    margin-bottom: 0;  /* Takođe možemo ukloniti marginu sa dna */
+}
+
+/* Animacija za H2 */
+#welcome h2 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Animacija za paragraf */
+#welcome p {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Dugme */
+#welcome .btn {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-radius: 50px;
+    margin-top: 20px;
+    border: none;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Klasu 'visible' koristimo za ponovo pokretanje animacije */
+#welcome.visible h2,
+#welcome.visible p,
+#welcome.visible .btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Mobilna odgovornost */
+@media (max-width: 768px) {
+    /* Smanjujemo visinu sekcije na mobilnim uređajima */
+    #welcome {
+        height: 60vh;  /* Smanjena visina sekcije na mobilnim uređajima */
+        padding: 40px 20px;  /* Dodajemo više paddinga za mobilne uređaje */
+    }
+
+    #welcome h2 {
+        font-size: 2.5rem; /* Manja veličina fonta za mobilne uređaje */
+    }
+
+    #welcome p {
+        font-size: 1rem; /* Manji font za mobilne uređaje */
+        margin-top: 10px;
+    }
+
+    #welcome .btn {
+        font-size: 1rem; /* Manje dugme za mobilne uređaje */
+        padding: 10px 20px;
+    }
+}
+/* Stilizacija za sekciju "hotel" */
+#hotel {
+    background-color: #f9f9f9; /* Svetla pozadina */
+    padding: 60px 20px; /* Veći razmak na vrhu i dnu */
+    border-radius: 8px; /* Blagi zaobljeni uglovi */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Suptilna senka za dubinu */
+    text-align: center; /* Centriranje teksta */
+    margin-bottom: 80px; /* Razmak ispod sekcije */
+}
+
+/* Stilizacija za tekst u sekciji "hotel" */
+.hotel-text {
+    max-width: 1000px; /* Maksimalna širina teksta */
+    margin-left: auto;
+    margin-right: auto;
+    color: #333; /* Tamna boja za tekst */
+}
+
+/* Naslov */
+.hotel-text h2 {
+    font-size: 2.5rem; /* Veći font za naslov */
+    font-weight: bold;
+    color: #444; /* Tamno siva boja */
+    margin-bottom: 20px; /* Razmak ispod naslova */
+    text-transform: uppercase; /* Velika slova za dodatnu eleganciju */
+    letter-spacing: 2px; /* Razmak između slova */
+}
+
+/* Paragraf ispod naslova */
+.hotel-text p {
+    font-size: 1.2rem; /* Veći font za tekst */
+    line-height: 1.6; /* Proširenje između linija za bolju čitljivost */
+    color: #666; /* Svetlo siva boja za tekst */
+    margin-bottom: 40px; /* Razmak ispod teksta */
+    max-width: 800px; /* Maksimalna širina paragrafa */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Media query za manje ekrane (mobilni uređaji) */
+@media (max-width: 768px) {
+    #hotel {
+        padding: 40px 20px; /* Manji razmak na mobilnim uređajima */
+    }
+
+    .hotel-text h2 {
+        font-size: 2rem; /* Manji font na mobilnim uređajima */
+    }
+
+    .hotel-text p {
+        font-size: 1rem; /* Manji font za tekst na mobilnim uređajima */
+    }
 }
