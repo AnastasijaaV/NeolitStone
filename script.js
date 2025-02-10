@@ -35,17 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Sledeća slika
-    nextButton.addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % items.length; // Ciklično
-        updateCarousel();
-    });
+    
 
-    // Prethodna slika
-    prevButton.addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + items.length) % items.length; // Ciklično
-        updateCarousel();
-    });
 
     // Dugmadi za indikatore
     indicators.forEach((indicator, index) => {
@@ -161,11 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // Dodavanje event listener-a na klik na "Kontakt" link
-    kontaktLink.addEventListener('click', function(e) {
-        e.preventDefault();  // Sprečavamo podrazumevano ponašanje linka
-        loadContact();  // Učitajte sadržaj za Kontakt
-    });
+ 
 });
 document.addEventListener('DOMContentLoaded', function() {
     const productImages = document.querySelectorAll('.product-image');
@@ -186,34 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dodajemo listener za skrolovanje
     window.addEventListener('scroll', checkVisibility);
 });
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const captionText = document.getElementById("caption");
-    const images = document.querySelectorAll(".gallery-image"); // Corrected class
-    const close = document.getElementsByClassName("close")[0];
 
-    // Funkcija koja otvara modal i postavlja sliku
-    images.forEach((img) => {
-        img.addEventListener('click', function() {
-            modal.style.display = "block"; // Otvori modal
-            modalImg.src = this.src; // Postavi src slike u modal
-            captionText.innerHTML = this.alt; // Postavi alt tekst kao opis slike
-        });
-    });
 
-    // Funkcija za zatvaranje modala kada se klikne na X
-    close.addEventListener('click', function() {
-        modal.style.display = "none"; // Zatvori modal
-    });
-
-    // Zatvori modal ako korisnik klikne izvan slike
-    window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none"; // Zatvori modal
-        }
-    });
-});
 document.querySelectorAll('nav ul li a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault(); // Sprečava podrazumevano ponašanje
