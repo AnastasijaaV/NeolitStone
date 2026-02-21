@@ -1,245 +1,262 @@
 function toggleMenu() {
-    const menu = document.querySelector('nav ul');
-    menu.classList.toggle('active');  // Otvara ili zatvara meni
+  const menu = document.querySelector('.menu');
+  const btn = document.querySelector('.menu-toggle');
+  if (!menu) return;
+
+  const isOpen = menu.classList.toggle('active');
+  if (btn) btn.setAttribute('aria-expanded', String(isOpen));
 }
 
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function() {
-        const menu = document.querySelector('nav ul');
-        menu.classList.remove('active');  // Zatvara meni nakon klika na link
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('header');
+  const headerH = header ? header.offsetHeight : 72;
+
+  // Zatvori meni posle klika (mobilno)
+  document.querySelectorAll('nav ul li a').forEach(a => {
+    a.addEventListener('click', () => {
+      const menu = document.querySelector('.menu');
+      const btn = document.querySelector('.menu-toggle');
+      if (menu) menu.classList.remove('active');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
     });
-});
+  });
 
+  // Smooth scroll sa offsetom (zbog fixed header-a)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
 
-document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.carousel');
-    const items = document.querySelectorAll('.carousel-item');
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
-    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
-    
-    let currentIndex = 0;
+      const target = document.querySelector(href);
+      if (!target) return;
 
-    // Funkcija za promenu slike
-    function updateCarousel() {
-        const offset = -currentIndex * 100;
-        carousel.style.transform = `translateX(${offset}%)`;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - headerH;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
 
-        // Ažuriranje aktivnog indikatora
-        indicators.forEach((indicator, index) => {
-            if (index === currentIndex) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
-        });
+  // Active link u meniju
+  const menuLinks = Array.from(document.querySelectorAll('nav ul li a'));
+  const sections = Array.from(document.querySelectorAll('section'));
+
+  function setActiveLink() {
+    let current = null;
+    for (const s of sections) {
+      const rect = s.getBoundingClientRect();
+      if (rect.top <= headerH + 40 && rect.bottom >= headerH + 40) {
+        current = s;
+        break;
+      }
+    }
+    menuLinks.forEach(l => {
+      l.classList.toggle('active', current && l.getAttribute('href') === `#${current.id}`);
+    });
+  }
+  window.addEventListener('scroll', setActiveLink, { passive: true });
+  setActiveLink();
+
+  // Reveal animacija za #welcome
+  const welcome = document.getElementById('welcome');
+  if (welcome) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) welcome.classList.add('visible');
+      });
+    }, { threshold: 0.25 });
+    io.observe(welcome);
+
+    // Subtle parallax za hero background
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const offset = window.scrollY * 0.25;
+        welcome.style.backgroundPosition = `center ${offset}px`;
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  // WORKS: filter + lightbox
+  const grid = document.getElementById('worksGrid');
+  const items = grid ? Array.from(grid.querySelectorAll('.work-item')) : [];
+  const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
+
+  function applyFilter(cat) {
+    items.forEach(it => {
+      const ok = (cat === 'all') || (it.dataset.category === cat);
+      it.style.display = ok ? '' : 'none';
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.filter);
+    });
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbCap = document.getElementById('lightboxCaption');
+  const btnPrev = document.querySelector('.lightbox-prev');
+  const btnNext = document.querySelector('.lightbox-next');
+
+  let currentIndex = -1;
+  function visibleItems() {
+    return items.filter(it => it.style.display !== 'none');
+  }
+
+  function openLightbox(idx) {
+    const vis = visibleItems();
+    if (!vis.length) return;
+
+    currentIndex = Math.max(0, Math.min(idx, vis.length - 1));
+    const it = vis[currentIndex];
+
+    const full = it.dataset.full || it.querySelector('img')?.src;
+    const cap = it.dataset.caption || '';
+
+    if (lbImg && full) lbImg.src = full;
+    if (lbImg) lbImg.alt = it.querySelector('img')?.alt || 'Slika';
+    if (lbCap) lbCap.textContent = cap;
+
+    if (lightbox) {
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
     }
 
-    
+    document.body.style.overflow = 'hidden';
+  }
 
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
 
-    // Dugmadi za indikatore
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', function() {
-            currentIndex = index;
-            updateCarousel();
-        });
+  function step(dir) {
+    const vis = visibleItems();
+    if (!vis.length) return;
+
+    currentIndex = (currentIndex + dir + vis.length) % vis.length;
+    const it = vis[currentIndex];
+
+    const full = it.dataset.full || it.querySelector('img')?.src;
+    const cap = it.dataset.caption || '';
+
+    if (lbImg && full) lbImg.src = full;
+    if (lbImg) lbImg.alt = it.querySelector('img')?.alt || 'Slika';
+    if (lbCap) lbCap.textContent = cap;
+  }
+
+  items.forEach((it) => {
+    it.addEventListener('click', () => {
+      const vis = visibleItems();
+      const idx = vis.indexOf(it);
+      openLightbox(idx);
+    });
+  });
+
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t && t.dataset && t.dataset.close === '1') closeLightbox();
+    });
+  }
+  if (btnPrev) btnPrev.addEventListener('click', () => step(-1));
+  if (btnNext) btnNext.addEventListener('click', () => step(1));
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox || !lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+
+  // Kontakt forma (bez backenda)
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Hvala! Upit je spreman. Pošaljite i fotografije prostora na email, ili nas pozovite.');
+      form.reset();
     });
 
-    // Inicijalno ažuriranje galerije
-    updateCarousel();
-});
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+      // FAQ: otvori samo jedno pitanje u isto vreme
+  const faqItems = Array.from(document.querySelectorAll('.faq-item'));
+  faqItems.forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (!item.open) return;
+      faqItems.forEach((other) => {
+        if (other !== item) other.removeAttribute('open');
+      });
     });
+  });
+
+  }
 });
-document.addEventListener('DOMContentLoaded', function() {
-    const onamaSection = document.getElementById('onama');
-    
-    // Funkcija koja proverava kada je sekcija u vidljivom delu ekrana
-    function checkVisibility() {
-        const rect = onamaSection.getBoundingClientRect();
-        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-            onamaSection.classList.add('visible');
-        }
-    }
-    
-    // Pozivamo funkciju odmah nakon učitavanja stranice
-    checkVisibility();
+(() => {
+  const nums = document.querySelectorAll(".stat-num[data-count]");
+  if (!nums.length) return;
 
-    // Dodajemo listener za skrolovanje
-    window.addEventListener('scroll', checkVisibility);
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const menuLinks = document.querySelectorAll('nav ul li a');  // Svi meni linkovi
-    const sections = document.querySelectorAll('section');  // Sve sekcije na stranici
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
-    // Funkcija koja proverava koja sekcija je u vidljivom delu ekrana
-    function setActiveLink() {
-        let currentSection = null;
-        
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-                currentSection = section;
-            }
-        });
+  function animateCount(el, to, suffix = "", duration = 900) {
+    const from = 0;
+    const start = performance.now();
 
-        menuLinks.forEach(link => {
-            link.classList.remove('active');  // Uklanja "active" klasu sa svih linkova
-            if (currentSection && link.getAttribute('href') === '#' + currentSection.id) {
-                link.classList.add('active');  // Dodaje "active" klasu na odgovarajući link
-            }
-        });
+    // ako ima decimalu
+    const hasDecimal = String(to).includes(".");
+    const decimals = hasDecimal ? String(to).split(".")[1].length : 0;
+
+    function frame(now) {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = easeOutCubic(p);
+      const value = from + (to - from) * eased;
+
+      const formatted = hasDecimal
+        ? value.toFixed(decimals)
+        : Math.round(value).toString();
+
+      el.textContent = formatted + suffix;
+
+      if (p < 1) requestAnimationFrame(frame);
     }
 
-    // Pozivamo funkciju odmah pri učitavanju stranice
-    setActiveLink();
+    requestAnimationFrame(frame);
+  }
 
-    // Dodajemo listener za skrolovanje
-    window.addEventListener('scroll', setActiveLink);
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
 
-    // Dodajemo listener za klik na meni link
-    menuLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Uklanjamo "active" klasu sa svih linkova
-            menuLinks.forEach(link => link.classList.remove('active'));
-            // Dodajemo "active" klasu na kliknuti link
-            this.classList.add('active');
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const homeLink = document.getElementById('homeLink');  // ID linka "Početna"
+        const stat = entry.target.closest(".stat") || entry.target;
+        if (stat) stat.classList.add("is-visible");
 
-    // Dodajemo event listener za klik na link "Početna"
-    homeLink.addEventListener('click', function(e) {
-        e.preventDefault();  // Sprečavamo podrazumevano ponašanje linka
+        // animiraj samo jednom
+        if (entry.target.dataset.done === "1") return;
+        entry.target.dataset.done = "1";
 
-        // Pomeramo stranicu na vrh
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'  // Glatko skrolovanje do vrha
-        });
-    });
-});
+        const to = Number(entry.target.dataset.count);
+        const suffix = entry.target.dataset.suffix || "";
+        animateCount(entry.target, to, suffix, 850);
 
-document.addEventListener('DOMContentLoaded', function() {
-    const kontaktLink = document.getElementById('kontaktLink');  // ID za kontakt link
-    const content = document.getElementById('content');  // Glavni sadržaj
+        io.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.35 }
+  );
 
-    // Funkcija koja učitava sadržaj za Kontakt stranicu
-    function loadContact() {
-        content.innerHTML = `
-            <section id="kontakt" class="container mt-5">
-                <h2>Kontakt informacije</h2>
-                <div class="contact-details">
-                    <p><strong>Telefon:</strong> <a href="tel:+0658478076">065/8478076</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:info@studenicki-kamen.com">info@studenicki-kamen.com</a></p>
-                    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/studenicki.kamen84/" target="_blank">studenicki.kamen84</a></p>
-                </div>
-                <div class="map">
-                    <h3>Lokacija</h3>
-                    <img src="image.png" alt="Mapa lokacije" class="location-map">
-                </div>
-            </section>
-        `;
-    }
-
- 
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const productImages = document.querySelectorAll('.product-image');
-
-    // Funkcija koja proverava kada je slika u vidljivom delu ekrana
-    function checkVisibility() {
-        productImages.forEach(image => {
-            const rect = image.getBoundingClientRect();
-            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-                image.classList.add('visible');  // Dodajemo klasu koja pokreće animaciju
-            }
-        });
-    }
-
-    // Pozivamo funkciju odmah nakon učitavanja stranice
-    checkVisibility();
-
-    // Dodajemo listener za skrolovanje
-    window.addEventListener('scroll', checkVisibility);
-});
-
-
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault(); // Sprečava podrazumevano ponašanje
-
-        const targetId = this.getAttribute('href').substring(1); // Dobija ID sekcije
-        const targetSection = document.getElementById(targetId);
-
-        window.scrollTo({
-            top: targetSection.offsetTop - 100, // Pomera za 100px iznad sekcije
-            behavior: 'smooth'
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const welcomeSection = document.getElementById('welcome');
-    
-    // Funkcija koja proverava kada je sekcija u vidljivom delu ekrana
-    function checkVisibility() {
-        const rect = welcomeSection.getBoundingClientRect();
-        if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-            welcomeSection.classList.add('visible');
-        }
-    }
-    
-    // Pozivamo funkciju odmah nakon učitavanja stranice
-    checkVisibility();
-
-    // Dodajemo listener za skrolovanje
-    window.addEventListener('scroll', checkVisibility);
-});
-document.addEventListener('scroll', function() {
-    const welcomeSection = document.getElementById('welcome');
-    const scrollPosition = window.scrollY;
-    const offset = scrollPosition * 0.5; // Brzina pomeranja pozadine, možete prilagoditi broj
-
-    welcomeSection.style.backgroundPosition = `center ${offset}px`;  // Pomeranje pozadinske slike
-});
-document.addEventListener('scroll', function() {
-    const welcomeSection = document.getElementById('welcome');
-    const scrollPosition = window.scrollY;
-    const offset = scrollPosition * 0.7;  // Podesi brzinu pomeranja
-
-    // Menjaj pozadinsku poziciju na osnovu skrolovanja
-    welcomeSection.style.backgroundPosition = `center ${offset}px`;
-});
-
-
-// Kada korisnik klikne na "Početna" link, ponovo pokreni animaciju sekcije #welcome
-document.getElementById('homeLink').addEventListener('click', function(e) {
-    e.preventDefault();  // Sprečava podrazumevano ponašanje (skakanje do sekcije)
-    
-    const welcomeSection = document.getElementById('welcome');
-    
-    // Ukloni klasu 'visible' (ako postoji) koja je možda već postavljena
-    welcomeSection.classList.remove('visible');
-    
-    // Kratak timeout kako bi omogućili uklanjanje klasa pre ponovnog dodavanja
-    setTimeout(() => {
-        // Ponovno dodajemo klasu 'visible' koja pokreće animaciju
-        welcomeSection.classList.add('visible');
-        
-        // Skroluj do sekcije sa glatkim pomeranjem
-        window.scrollTo({
-            top: welcomeSection.offsetTop - 100, // Pomera za 100px iznad sekcije
-            behavior: 'smooth'  // Glatko skrolovanje
-        });
-    }, 1000);  // Odlaganje od 500ms kako bi efekat bio vidljiviji
-});
+  nums.forEach((el) => {
+    // start stanje (0+)
+    const suffix = el.dataset.suffix || "";
+    el.textContent = "0" + suffix;
+    io.observe(el);
+  });
+})();
