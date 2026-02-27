@@ -1,757 +1,931 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neolit Stone | Dekorativni kamen | Studenički kamen | Kamen za zid i dvorište</title>
-<meta name="description" content="Neolit Stone – prirodni dekorativni studenički kamen za zid, fasadu, dvorište i enterijer. Proizvodnja i prodaja, sečenje i obrada po meri. Cena na upit.">
-<meta property="og:title" content="Neolit Stone – dekorativni studenički kamen">
-<meta property="og:description" content="Prirodni kamen za zid, fasadu i dvorište. Obrada po meri. Cena na upit.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="og-cover.jpg">
-<meta name="twitter:card" content="summary_large_image">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neolit Stone | Studenički kamen | Dekorativni kamen za zid, fasadu i dvorište</title>
+  <meta name="description" content="Neolit Stone – prirodni dekorativni studenički kamen za zid, fasadu, dvorište i enterijer. Proizvodnja i prodaja, sečenje i obrada po meri. Cena na upit. Studenički kamen vrhunskog kvaliteta.">
+  <meta name="keywords" content="studenicki kamen, studenički kamen, dekorativni kamen, kamen za zid, kamen za fasadu, kamen za dvorište, prirodni kamen, neolit stone, sečenje kamena, obrada kamena">
+  <meta property="og:title" content="Neolit Stone – Studenički kamen za zid, fasadu i dvorište">
+  <meta property="og:description" content="Prirodni studenički kamen za zid, fasadu i dvorište. Obrada po meri. Cena na upit.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="./NeolitStoneLogo.jpg" type="image/png">
 
-    <link rel="icon" href="slika1.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
-    <!-- Uključivanje Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Uključivanje Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Tvoj Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Zaglavlje i Meni -->
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="#welcome" aria-label="Neolit Stone - Početna">
-      <span class="brand-mark" aria-hidden="true">
-        <!-- minimalist icon placeholder (možeš kasnije zameniti svg) -->
-<span class="brand-mark" aria-hidden="true">
-  <img src="NeolitStoneLogo.jpg" alt="" class="brand-logo-img">
-</span>
-      </span>
-      <span class="brand-text">
-        <span class="brand-name">Neolit Stone</span>
-        <span class="brand-tag">Prirodni dekorativni kamen</span>
-      </span>
-    </a>
+  <!-- ======== PRELOADER ======== -->
+  <!-- <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-stone"></div>
+      <span class="preloader-text">Neolit Stone</span>
+    </div>
+  </div> -->
 
-    <nav class="nav" aria-label="Glavna navigacija">
-      <button class="menu-toggle" type="button" aria-label="Otvori meni" aria-expanded="false" onclick="toggleMenu()">
+  <!-- ======== CURSOR (desktop only) ======== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ======== HEADER ======== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="logo" href="#hero" aria-label="Neolit Stone - Početna">
+        <svg class="logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 13L18 6L29 13L18 20L7 13Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M7 22L18 15L29 22L18 29L7 22Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".7"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-name">Neolit Stone</span>
+          <span class="logo-tag">Studenički kamen</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="nav">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link">Početna</a></li>
+          <li><a href="#about" class="nav-link">O nama</a></li>
+          <li><a href="#showcase" class="nav-link">Premium</a></li>
+          <li><a href="#products" class="nav-link">Ponuda</a></li>
+          <li><a href="#gallery" class="nav-link">Radovi</a></li>
+          <li><a href="#investors" class="nav-link">Investitori</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li><a href="#contact" class="nav-link nav-cta">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Otvori meni" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
+    </div>
+  </header>
 
-      <ul class="menu" role="list">
-        <li><a href="#welcome">Početna</a></li>
-        <li><a href="#onama">O nama</a></li>
-        <li><a href="#proizvodi">Ponuda</a></li>
-        <li><a href="#hotel-carousel">Premium projekat</a></li>
-        <li><a href="#nasi-radovi">Naši radovi</a></li>
-        <li><a href="#investitori">Investitori</a></li>
-        <li><a href="#faq">Česta pitanja</a></li>
-        <li><a href="#kontakt" class="nav-cta">Pošaljite upit</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="./pocetna-zutitigar.jpg" alt="Studenički kamen - premium projekat" loading="eager">
+      <div class="hero-overlay"></div>
+    </div>
 
-<section id="welcome" class="welcome-section welcome-premium">
-  <div class="hero-inner">
-    <div class="hero-panel hero-reveal">
-      <div class="hero-top">
-        <span class="hero-pill">Prirodni dekorativni kamen • Studenica</span>
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <div class="hero-content">
+      <div class="hero-badges reveal-up">
+        <span class="hero-badge glass-pill">Prirodni dekorativni kamen • Studenica</span>
+        <span class="hero-badge glass-pill subtle">Sečenje i obrada po meri</span>
       </div>
 
-      <h1>Dekorativni kamen za zid, fasadu i dvorište</h1>
+      <h1 class="hero-title reveal-up delay-1">
+        Dekorativni <span class="gold-text">studenički kamen</span> za zid, fasadu i dvorište
+      </h1>
 
-      <p class="hero-subtitle">
-        Sečenje i obrada po meri. Brza isporuka i ugradnja po dogovoru.
+      <p class="hero-subtitle reveal-up delay-2">
+        Proizvodnja i prodaja prirodnog studeničkog kamena uz precizno sečenje i obradu po meri. Elegancija koja traje generacijama.
       </p>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="tel:+381641528929">Pozovite</a>
-        <a class="btn btn-secondary" href="#kontakt">Pošaljite upit</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- Kombinovana sekcija sa tekstom i carousel-om -->
-<section id="hotel-carousel" class="showcase">
-  <div class="showcase-inner">
-    <div class="showcase-copy">
-      <p class="showcase-badge">Premium projekat • Referenca</p>
-
-      <h2>Kamen koji izgleda luksuzno u stvarnom prostoru</h2>
-
-      <p class="showcase-lead">
-        Naš dekorativni prirodni kamen korišćen je u projektima visokih standarda – od enterijera do fasada.
-        Radimo sečenje i obradu po meri. Cena je na upit.
-      </p>
-
-      <ul class="showcase-points">
-        <li>Prirodni kamen za zid, fasadu i detalje</li>
-        <li>Obrada po meri (rez, dimenzije, završna obrada)</li>
-        <li>Dogovor i isporuka prema projektu</li>
-      </ul>
-
-      <div class="showcase-actions">
-        <a class="btn btn-secondary" href="#nasi-radovi">Pogledajte radove</a>
-        <a class="btn btn-primary" href="#kontakt">Pošaljite upit</a>
+      <div class="hero-actions reveal-up delay-3">
+        <a class="btn btn-gold" href="tel:+381641528929">
+          <i data-lucide="phone" class="btn-icon"></i>
+          Pozovite
+        </a>
+        <a class="btn btn-glass" href="#contact">
+          <i data-lucide="send" class="btn-icon"></i>
+          Pošaljite upit
+        </a>
       </div>
 
-   
-    </div>
-
-    <div class="showcase-media">
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="3500">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleControls" data-slide-to="1"></li>
-          <li data-target="#carouselExampleControls" data-slide-to="2"></li>
-        </ol>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="pre.jpg" class="d-block w-100" loading="lazy"
-                 alt="Dekorativni kamen na fasadi – premium projekat">
-          </div>
-          <div class="carousel-item">
-            <img src="posle.jpg" class="d-block w-100" loading="lazy"
-                 alt="Prirodni studenički kamen – detalj obloge">
-          </div>
-          <div class="carousel-item">
-            <img src="pocetna-zutitigar.jpg" class="d-block w-100" loading="lazy"
-                 alt="Kamen za zid i enterijer – završna obrada">
-          </div>
-        </div>
-
-       
-      </div>
-
-      <p class="showcase-caption">Kamen kao premium završna obloga u realnom prostoru.</p>
-    </div>
-  </div>
-</section>
-
-
-    
-<section id="onama" class="about">
-  <div class="about-inner">
-    <div class="about-head">
-      <span class="about-kicker">Porodična tradicija • Studenica</span>
-      <h2>O nama</h2>
-      <p class="about-sub">
-        Neolit Stone se bavi proizvodnjom i prodajom prirodnog dekorativnog studeničkog kamena.
-        Fokus nam je na preciznoj obradi, pouzdanoj isporuci i rešenjima koja izgledaju luksuzno u stvarnom prostoru.
-      </p>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-copy">
-        <div class="about-card">
-          <h3>Kvalitet koji traje</h3>
-          <p>
-            Radimo sečenje i obradu po meri, uz pažljivo biranje strukture i tona kamena za svaki projekat.
-            Bilo da je zid, fasada, dvorište ili enterijer – cilj je isti: uredan završni izgled i dug vek trajanja.
-          </p>
-
-          <ul class="about-points">
-            <li><strong>Obrada po meri</strong> (sečene ploče, lomljeni kamen, suvi zid)</li>
-            <li><strong>Savetovanje</strong> pri izboru kamena i kombinovanju sa okruženjem</li>
-            <li><strong>Isporuka</strong> i dogovor oko dinamike za veće projekte</li>
-          </ul>
-
-          <div class="about-actions">
-            <a class="btn btn-primary" href="#kontakt">Pošaljite upit</a>
-            <a class="btn btn-secondary" href="tel:+381600000000">Pozovite</a>
-          </div>
-        </div>
-
-        <div class="about-stats">
-          <div class="stat">
-            <div class="stat-num" data-count="15" data-suffix="+">15+</div>
-            <div class="stat-label">godina iskustva</div>
-          </div>
-          <div class="stat">
-           <div class="stat-num" data-count="200" data-suffix="+">200+</div>
-            <div class="stat-label">realizovanih projekata</div>
-          </div>
-          <div class="stat">
-           <div class="stat-num" data-count="10" data-suffix="+">10+</div>
-            <div class="stat-label">tipova kamena</div>
-          </div>
-        </div>
-
-        <div class="about-trust">
-          <div class="trust-item">
-            <span class="trust-dot"></span>
-            <span>Proverena završna obrada</span>
-          </div>
-          <div class="trust-item">
-            <span class="trust-dot"></span>
-            <span>Stabilna isporuka</span>
-          </div>
-          <div class="trust-item">
-            <span class="trust-dot"></span>
-            <span>Cena: na upit</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-media">
-        <div class="about-collage">
-          <figure class="about-photo a">
-            <img src="pocetna-zutitigar.jpg" alt="Prirodni dekorativni kamen za zid – Neolit Stone" loading="lazy">
-          </figure>
-          <figure class="about-photo b">
-            <img src="kamen-dvoriste3.jpg" alt="Studenički kamen za fasadu – primer ugradnje" loading="lazy">
-          </figure>
-          <figure class="about-photo c">
-            <img src="kamen-dvoriste2.jpg" alt="Kamen za dvorište i staze – dekorativni detalji" loading="lazy">
-          </figure>
-
-          <div class="about-badge">
-            <div class="badge-title">Studenica</div>
-            <div class="badge-sub">Prirodni kamen • Obrada po meri</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    
-    <section id="proizvodi" class="offer">
-  <div class="offer-inner">
-    <div class="offer-head">
-      <h2>Ponuda</h2>
-      <p class="offer-sub">
-        Prirodni dekorativni kamen za zid, fasadu, dvorište i enterijer. Sečenje i obrada po meri. Cena je na upit.
-      </p>
-
-      <div class="offer-chips" aria-label="Kategorije ponude">
-        <span class="chip">Kamen za zid</span>
-        <span class="chip">Dekorativni kamen</span>
-        <span class="chip">Prirodni studenički kamen</span>
-        <span class="chip">Kamen za dvorište</span>
-        <span class="chip">Lomljeni / sečene ploče</span>
-        <span class="chip">Suvi zid</span>
+      <div class="hero-tags reveal-up delay-4">
+        <span class="hero-tag">Studenički kamen</span>
+        <span class="hero-tag">Zid • Fasada</span>
+        <span class="hero-tag">Dvorište • Enterijer</span>
       </div>
     </div>
 
-    <div class="offer-grid">
-      <!-- kartica 1 -->
-      <article class="offer-card">
-        <div class="offer-img">
-          <img src="slika6.jpg" loading="lazy" alt="Kamen za zid – prirodni studenički kamen (primer)">
-        </div>
-        <div class="offer-body">
-          <h3>Bakarna Studenica</h3>
-          <p>Topao ton, odličan za zidove i detalje u enterijeru i eksterijeru.</p>
-          <div class="offer-meta">
-            <span>Namena: zid / fasada</span>
-            <span class="price">Cena: na upit</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- kartica 2 -->
-      <article class="offer-card">
-        <div class="offer-img">
-          <img src="slika10.jpg" loading="lazy" alt="Dekorativni kamen – beli mermer (primer)">
-        </div>
-        <div class="offer-body">
-          <h3>Beli mermer</h3>
-          <p>Čist i moderan izgled za enterijer, stepeništa i dekorativne površine.</p>
-          <div class="offer-meta">
-            <span>Namena: enterijer</span>
-            <span class="price">Cena: na upit</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- kartica 3 -->
-      <article class="offer-card">
-        <div class="offer-img">
-          <img src="slika5.jpg" loading="lazy" alt="Lomljeni kamen – dekorativni kamen za zid (primer)">
-        </div>
-        <div class="offer-body">
-          <h3>Lomljena ploča</h3>
-          <p>Prirodna tekstura, idealna za dekorativne zidove i rustične ambijente.</p>
-          <div class="offer-meta">
-            <span>Namena: zid / dvorište</span>
-            <span class="price">Cena: na upit</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- kartica 4 -->
-      <article class="offer-card">
-        <div class="offer-img">
-          <img src="slika8.jpg" loading="lazy" alt="Sečene ploče – kamen za fasadu (primer)">
-        </div>
-        <div class="offer-body">
-          <h3>Sečene ploče</h3>
-          <p>Precizne dimenzije, čist spoj i premium završnica za fasade i enterijer.</p>
-          <div class="offer-meta">
-            <span>Namena: fasada / enterijer</span>
-            <span class="price">Cena: na upit</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- kartica 5 -->
-      <article class="offer-card">
-        <div class="offer-img">
-          <img src="stub.png" loading="lazy" alt="Mermerna galanterija – stubovi i detalji (primer)">
-        </div>
-        <div class="offer-body">
-          <h3>Mermerna galanterija</h3>
-          <p>Stubovi, lajsne i detalji po meri — za projekte koji traže završni „premium“ utisak.</p>
-          <div class="offer-meta">
-            <span>Namena: detalji</span>
-            <span class="price">Cena: na upit</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- kartica 6 -->
-      <article class="offer-card">
-        <div class="offer-img">
-          <img src="naslovna.jpg" loading="lazy" alt="Suvi zid – kamen za dvorište (primer)">
-        </div>
-        <div class="offer-body">
-          <h3>Suvi zid</h3>
-          <p>Prirodno uklapanje u dvorišta i terene, stabilno i dekorativno rešenje.</p>
-          <div class="offer-meta">
-            <span>Namena: dvorište</span>
-            <span class="price">Cena: na upit</span>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="offer-bottom">
-      <div class="tipbox">
-        <h3>Kako odabrati kamen</h3>
-        <ul>
-          <li>Pošaljite sliku prostora i navedite da li je zid/fasada/dvorište/enterijer.</li>
-          <li>Napišite okvirnu kvadraturu i željeni ton (svetliji/tamniji).</li>
-          <li>Po potrebi radimo sečenje i obradu po meri.</li>
-        </ul>
-      </div>
-
-      <div class="offer-cta">
-        <h3>Treba vam predlog i ponuda?</h3>
-        <p>Pošaljite upit — dobijate preporuku rešenja i cenu na upit prema vrsti kamena i količini.</p>
-        <div class="offer-actions">
-          <a class="btn btn-primary" href="#kontakt">Pošaljite upit</a>
-          <a class="btn btn-secondary" href="tel:+0641528929">Pozovite</a>
-        </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-indicator">
+        <span>Skrolujte</span>
+        <div class="scroll-line"></div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-
-<section id="nasi-radovi" class="works">
-  <div class="works-inner">
-    <div class="works-head">
-      <h2>Naši radovi</h2>
-      <p class="works-sub">
-        Realne fotografije sa terena • Naši projekti
-     </p>
-
-      <div class="works-filters" role="tablist" aria-label="Filter galerije">
-        <button class="filter-btn active" type="button" data-filter="all">Sve</button>
-        <button class="filter-btn" type="button" data-filter="zidovi">Zidovi</button>
-        <button class="filter-btn" type="button" data-filter="fasade">Fasade</button>
-        <button class="filter-btn" type="button" data-filter="dvorista">Dvorišta</button>
-        <button class="filter-btn" type="button" data-filter="enterijer">Enterijer</button>
-        <button class="filter-btn" type="button" data-filter="projekti">Projekti</button>
-      </div>
-    </div>
-
-    <div class="works-grid" id="worksGrid">
-      <!-- Svaka slika: data-category + data-full (za lightbox), loading="lazy" + dobar alt -->
-
-      <figure class="work-item" data-category="projekti" data-full="hotel9.jpg" data-caption="Projekat: premium enterijer / obloga zida">
-        <img src="hotel9.jpg" loading="lazy" alt="Studenički kamen – projekat (hotel) obloga zida">
-      </figure>
-
-      <figure class="work-item" data-category="zidovi" data-full="rad3.png" data-caption="Zid: dekorativni kamen – prirodna tekstura">
-        <img src="rad3.png" loading="lazy" alt="Dekorativni kamen za zid – primer primene">
-      </figure>
-
-      <figure class="work-item" data-category="enterijer" data-full="rad13.jpg" data-caption="Enterijer: kamen kao dekorativni detalj">
-        <img src="rad13.jpg" loading="lazy" alt="Dekorativni kamen u enterijeru – prirodni studenički kamen">
-      </figure>
-
-      <figure class="work-item" data-category="fasade" data-full="rad14.jpg" data-caption="Fasada: kamen kao završna obloga">
-        <img src="rad14.jpg" loading="lazy" alt="Kamen za fasadu – studenički kamen (primer)">
-      </figure>
-
-      <figure class="work-item" data-category="dvorista" data-full="rad10.jpg" data-caption="Dvorište: obloga i staze">
-        <img src="rad10.jpg" loading="lazy" alt="Kamen za dvorište – prirodni kamen (primer)">
-      </figure>
-
-      <figure class="work-item" data-category="zidovi" data-full="rad6.png" data-caption="Zid: lomljeni kamen – rustičan izgled">
-        <img src="rad6.png" loading="lazy" alt="Lomljeni dekorativni kamen za zid – primer">
-      </figure>
-
-      <figure class="work-item" data-category="zidovi" data-full="rad7.png" data-caption="Zid: sečene ploče – čist spoj">
-        <img src="rad7.png" loading="lazy" alt="Sečene ploče – kamen za zid (primer)">
-      </figure>
-
-      <figure class="work-item" data-category="dvorista" data-full="rad8.png" data-caption="Dvorište: suvi zid / prirodna ograda">
-        <img src="rad8.png" loading="lazy" alt="Suvi zid – kamen za dvorište (primer)">
-      </figure>
-
-      <figure class="work-item" data-category="enterijer" data-full="slika2.jpg" data-caption="Enterijer: dekorativni zid">
-        <img src="slika2.jpg" loading="lazy" alt="Dekorativni kamen u enterijeru – kamen za zid">
-      </figure>
-
-      <figure class="work-item" data-category="fasade" data-full="rad9.jpg" data-caption="Fasada: prirodni kamen kao obloga">
-        <img src="rad9.jpg" loading="lazy" alt="Kamen za fasadu – dekorativni kamen (primer)">
-      </figure>
-
-      <figure class="work-item" data-category="projekti" data-full="hotel6.jpg" data-caption="Projekat: veći objekat / spoljašnja primena">
-        <img src="hotel6.jpg" loading="lazy" alt="Prirodni studenički kamen – projekat (spoljašnja primena)">
-      </figure>
-
-      <figure class="work-item" data-category="projekti" data-full="rad11.jpg" data-caption="Projekat: kombinacija tonova i tekstura">
-        <img src="rad11.jpg" loading="lazy" alt="Dekorativni kamen – projekat (kombinacija tonova)">
-      </figure>
-    </div>
-  </div>
-
-  <!-- Lightbox modal -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-backdrop" data-close="1"></div>
-    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Pregled slike">
-      <button class="lightbox-close" type="button" aria-label="Zatvori" data-close="1">✕</button>
-      <button class="lightbox-prev" type="button" aria-label="Prethodna">‹</button>
-
-      <div class="lightbox-media">
-        <img id="lightboxImg" alt="">
+  <!-- ======== ABOUT ======== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-kicker">Porodična tradicija • Studenica</span>
+        <h2 class="section-title">O <span class="gold-text">nama</span></h2>
+        <p class="section-subtitle">
+          Neolit Stone se bavi proizvodnjom i prodajom prirodnog dekorativnog studeničkog kamena.
+          Fokus nam je na preciznoj obradi, pouzdanoj isporuci i rešenjima koja izgledaju luksuzno u stvarnom prostoru.
+        </p>
       </div>
 
-      <button class="lightbox-next" type="button" aria-label="Sledeća">›</button>
-      <p class="lightbox-caption" id="lightboxCaption"></p>
-    </div>
-  </div>
-</section>
-
-
-    
-<section id="investitori" class="invest">
-  <div class="invest-inner">
-    <div class="invest-card">
-      <div class="invest-badge">Ponuda za investitore</div>
-
-      <h2>Posebni uslovi za veće projekte i kupovine</h2>
-      <p class="invest-lead">
-        Za hotele, građevinske firme, arhitekte i velike projekte pripremamo ponudu po meri.
-        Cena je na upit i zavisi od vrste kamena, obrade i količine.
-      </p>
-
-      <div class="invest-grid">
-        <div class="invest-item">
-          <h3>Posebni uslovi za količine</h3>
-          <p>Popusti i logistika za veće narudžbine, uz jasno definisane rokove.</p>
-        </div>
-        <div class="invest-item">
-          <h3>Prioritetna proizvodnja</h3>
-          <p>Rezervisani termini i brža realizacija za investitorske projekte.</p>
-        </div>
-        <div class="invest-item">
-          <h3>Sečenje i obrada po meri</h3>
-          <p>Dimenzije i završna obrada prilagođeni projektu (enterijer/eksterijer).</p>
-        </div>
-        <div class="invest-item">
-          <h3>Podrška u planiranju</h3>
-          <p>Preporuka vrste kamena, količina i detalja ugradnje, uz posvećenu komunikaciju.</p>
-        </div>
-      </div>
-
-      <div class="invest-actions">
-        <a class="btn btn-primary" href="#kontakt">Kontaktirajte nas za investitorsku ponudu</a>
-        <a class="btn btn-secondary" href="#kontakt">Zakažite razgovor</a>
-      </div>
-
-      <p class="invest-note">
-        Za profesionalce: arhitekte, dizajnere i izvođače radova — posaljite nacrte i fotografije, mi Vam vraćamo predlog rešenja i cenu.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-<section id="faq" class="faq">
-  <div class="faq-inner">
-    <div class="faq-head">
-      <h2>Česta pitanja</h2>
-      <p class="faq-sub">
-        Odgovori na najčešća pitanja o dekorativnom kamenu, studeničkom kamenu, isporuci i izradi po meri.
-      </p>
-    </div>
-
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>Koji kamen je najbolji kao kamen za zid?</summary>
-        <div class="faq-content">
-          <p>
-            Najbolji izbor zavisi od prostora i željenog izgleda. Za moderan izgled često se biraju sečene ploče,
-            dok lomljeni kamen daje prirodniju teksturu. Pošaljite fotografiju zida i okvirnu kvadraturu — predložićemo rešenje.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Da li je studenički kamen pogodan za spoljašnju fasadu?</summary>
-        <div class="faq-content">
-          <p>
-            Da. Prirodni studenički kamen je čest izbor za fasade zbog postojanosti i izgleda.
-            Preporuka zavisi od podloge, izloženosti vremenskim uslovima i tipa završne obrade.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Kako se održava dekorativni kamen u dvorištu?</summary>
-        <div class="faq-content">
-          <p>
-            Održavanje je jednostavno: periodično pranje vodom i po potrebi blagim sredstvom.
-            Kod jačeg zaprljanja može se koristiti pranje pod pritiskom (uz pažnju prema fugama i površini).
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Da li radite sečenje i obradu po meri?</summary>
-        <div class="faq-content">
-          <p>
-            Da. Radimo sečenje i obradu prema dimenzijama i potrebama projekta (rez, format, završna obrada).
-            Najbrže je da pošaljete skicu ili fotografije i napišete šta želite da postignete.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Kako ide isporuka i ugradnja?</summary>
-        <div class="faq-content">
-          <p>
-            Isporuka je prema dogovoru i zavisi od lokacije i količine. Ugradnju obično rade majstori izvođača za vece kolicine,
-      dok za menje kvadrature tu uslugu nudimo i mi. </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Koliko traje realizacija porudžbine?</summary>
-        <div class="faq-content">
-          <p>
-            Rok zavisi od vrste kamena, obrade i količine. Nakon upita i osnovnih informacija,
-            dobićete okviran rok izrade i isporuke.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Da li je moguće poručiti veće količine (investitori)?</summary>
-        <div class="faq-content">
-          <p>
-            Da. Za investitorske projekte nudimo posebne uslove, prioritetnu izradu i ponudu prilagođenu projektu.
-            Kontaktirajte nas sa specifikacijom i rokovima.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Kako dobijam cenu?</summary>
-        <div class="faq-content">
-          <p>
-            Cena je na upit i zavisi od vrste kamena, završne obrade i količine. Pošaljite fotografije prostora,
-            okvirnu kvadraturu i željeni stil — dobićete predlog i ponudu.
-          </p>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-
-
-<section id="kontakt" class="contact">
-  <div class="contact-inner">
-    <div class="contact-head">
-      <h2>Kontakt</h2>
-      <p class="contact-sub">
-        Pošaljite upit i dobićete predlog rešenja i cenu na upit (u zavisnosti od vrste kamena i količine).
-      </p>
-    </div>
-
-    <div class="contact-grid">
-      <!-- Levo: informacije + forma -->
-      <div class="contact-left">
-        <div class="contact-cards">
-          <a class="contact-card" href="tel:+381641528929" aria-label="Pozovite Neolit Stone">
-            <div class="cc-title">Telefon</div>
-            <div class="cc-value">064/152-8929</div>
-            <div class="cc-note">Pozovite za brzu konsultaciju</div>
-          </a>
-
-          <a class="contact-card" href="mailto:planojevicnenad@gmail.com" aria-label="Pošaljite email Neolit Stone">
-            <div class="cc-title">Email</div>
-            <div class="cc-value">planojevicnenad@gmail.com</div>
-            <div class="cc-note">Pošaljite fotografije i dimenzije</div>
-          </a>
-
-          <a class="contact-card" href="https://www.instagram.com/nenad.neolitstone/" target="_blank" rel="noopener" aria-label="Instagram Neolit Stone">
-            <div class="cc-title">Instagram</div>
-            <div class="cc-value">@nenad.neolitstone</div>
-            <div class="cc-note">Radovi i inspiracija</div>
-          </a>
-        </div>
-
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <div class="form-field">
-              <label for="fullName">Ime i prezime</label>
-              <input id="fullName" name="fullName" type="text" placeholder="Unesite ime i prezime" required>
-            </div>
-            <div class="form-field">
-              <label for="phone">Telefon</label>
-              <input id="phone" name="phone" type="tel" placeholder="npr. 06x/xxx-xxxx" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="npr. ime@email.com" required>
-            </div>
-            <div class="form-field">
-              <label for="projectType">Tip projekta</label>
-              <select id="projectType" name="projectType" required>
-                <option value="" selected disabled>Izaberite tip projekta</option>
-                <option value="Zid">Zid</option>
-                <option value="Fasada">Fasada</option>
-                <option value="Dvorište">Dvorište</option>
-                <option value="Enterijer">Enterijer</option>
-                <option value="Investitorski projekat">Investitorski projekat</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-field">
-            <label for="message">Poruka</label>
-            <textarea id="message" name="message" rows="5"
-              placeholder="Napišite kvadraturu (ako znate), željeni ton (svetliji/tamniji) i pošaljite slike prostora." required></textarea>
-          </div>
-
-          <div class="form-bottom">
-            <p class="form-note">
-              Preporuka: Pošaljite 2–3 fotografije prostora i osnovne dimenzije — dobićete predlog rešenja i cenu na upit.
+      <div class="about-grid">
+        <div class="about-content reveal-left">
+          <div class="glass-card about-card">
+            <h3>Kvalitet koji traje</h3>
+            <p>
+              Radimo sečenje i obradu po meri, uz pažljivo biranje strukture i tona kamena za svaki projekat.
+              Bilo da je zid, fasada, dvorište ili enterijer – cilj je isti: uredan završni izgled i dug vek trajanja.
             </p>
-            <button class="btn btn-primary" type="submit">Pošaljite upit</button>
+            <ul class="about-list">
+              <li>
+                <i data-lucide="check-circle" class="list-icon"></i>
+                <span><strong>Obrada po meri</strong> — sečene ploče, lomljeni kamen, suvi zid</span>
+              </li>
+              <li>
+                <i data-lucide="check-circle" class="list-icon"></i>
+                <span><strong>Savetovanje</strong> pri izboru kamena i kombinovanju sa okruženjem</span>
+              </li>
+              <li>
+                <i data-lucide="check-circle" class="list-icon"></i>
+                <span><strong>Isporuka</strong> i dogovor oko dinamike za veće projekte</span>
+              </li>
+            </ul>
+            <div class="about-actions">
+              <a class="btn btn-gold" href="#contact">Pošaljite upit</a>
+              <a class="btn btn-outline" href="tel:+381641528929">Pozovite</a>
+            </div>
           </div>
-        </form>
+
+          <!-- Stats -->
+          <div class="stats-row">
+            <div class="stat-card glass-card">
+              <div class="stat-number" data-count="15">0</div>
+              <div class="stat-suffix">+</div>
+              <div class="stat-label">Godina iskustva</div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-number" data-count="200">0</div>
+              <div class="stat-suffix">+</div>
+              <div class="stat-label">Realizovanih projekata</div>
+            </div>
+            <div class="stat-card glass-card">
+              <div class="stat-number" data-count="10">0</div>
+              <div class="stat-suffix">+</div>
+              <div class="stat-label">Tipova kamena</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-media reveal-right">
+          <div class="about-collage">
+            <div class="collage-img collage-main">
+              <img src="./pocetna-zutitigar.jpg" alt="Prirodni dekorativni studenički kamen za zid" loading="lazy">
+            </div>
+            <div class="collage-img collage-secondary">
+              <img src="./kamen-dvoriste3.jpg" alt="Studenički kamen za fasadu – primer ugradnje" loading="lazy">
+            </div>
+            <div class="collage-img collage-tertiary">
+              <img src="./kamen-dvoriste2.jpg" alt="Kamen za dvorište i staze – dekorativni detalji" loading="lazy">
+            </div>
+            <div class="collage-badge glass-card">
+              <div class="badge-title">Studenica</div>
+              <div class="badge-sub">Prirodni kamen • Obrada po meri</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Desno: mapa -->
-      <div class="contact-right">
-        <div class="map-wrap">
-          <div class="map-head">
-            <h3>Lokacija</h3>
-            <p>Studenica i okolina • Isporuka prema dogovoru</p>
+      <div class="trust-row reveal-up">
+        <div class="trust-item glass-pill">
+          <i data-lucide="shield-check" class="trust-icon"></i>
+          <span>Proverena završna obrada</span>
+        </div>
+        <div class="trust-item glass-pill">
+          <i data-lucide="truck" class="trust-icon"></i>
+          <span>Stabilna isporuka</span>
+        </div>
+        <div class="trust-item glass-pill">
+          <i data-lucide="tag" class="trust-icon"></i>
+          <span>Cena: na upit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SHOWCASE / PREMIUM ======== -->
+  <section class="section showcase" id="showcase">
+    <div class="showcase-bg">
+      <img src="./spoljasnost-hotela2.JPG" alt="Premium studenički kamen projekat" loading="lazy">
+      <div class="showcase-overlay"></div>
+    </div>
+
+    <div class="container">
+      <div class="showcase-inner">
+        <div class="showcase-content reveal-left">
+          <span class="section-kicker light">Premium projekat • Referenca</span>
+          <h2 class="section-title light">Kamen koji izgleda <span class="gold-text">luksuzno</span> u stvarnom prostoru</h2>
+          <p class="showcase-lead">
+            Naš dekorativni prirodni studenički kamen korišćen je u projektima visokih standarda – od enterijera do fasada.
+            Radimo sečenje i obradu po meri. Cena je na upit.
+          </p>
+          <ul class="showcase-points">
+            <li><i data-lucide="gem" class="point-icon"></i> Prirodni studenički kamen za zid, fasadu i detalje</li>
+            <li><i data-lucide="ruler" class="point-icon"></i> Obrada po meri (rez, dimenzije, završna obrada)</li>
+            <li><i data-lucide="calendar-check" class="point-icon"></i> Dogovor i isporuka prema projektu</li>
+          </ul>
+          <div class="showcase-actions">
+            <a class="btn btn-gold" href="#contact">Pošaljite upit</a>
+            <a class="btn btn-glass-light" href="#gallery">Pogledajte radove</a>
           </div>
-          <div class="map-frame">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5787.036469304074!2d20.506753088251532!3d43.51238481356273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4757b38ed1972f9b%3A0xc06bc73304c9b3af!2sNEOLIT%20STONE%20-Prirodni%20dekorativni%20kamen!5e0!3m2!1ssr!2srs!4v1739028723606!5m2!1ssr!2srs"
-              width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="showcase-meta">
+            <span class="meta-item"><i data-lucide="layers" class="meta-icon"></i> Materijal: prirodni kamen</span>
+            <span class="meta-item"><i data-lucide="home" class="meta-icon"></i> Namena: enterijer / eksterijer</span>
+            <span class="meta-item"><i data-lucide="clock" class="meta-icon"></i> Rok: prema dogovoru</span>
+          </div>
+        </div>
+
+        <div class="showcase-slider reveal-right">
+          <div class="slider-container" id="showcaseSlider">
+            <div class="slider-track">
+              <div class="slide active">
+                <img src="./pre.jpg" alt="Dekorativni studenički kamen na fasadi – premium projekat" loading="lazy">
+              </div>
+              <div class="slide">
+                <img src="./posle.jpg" alt="Prirodni studenički kamen – detalj obloge" loading="lazy">
+              </div>
+              <div class="slide">
+                <img src="./rad3.png" alt="Studenički kamen za zid i enterijer – završna obrada" loading="lazy">
+              </div>
+            </div>
+            <div class="slider-controls">
+              <button class="slider-btn prev" aria-label="Prethodna slika"><i data-lucide="chevron-left"></i></button>
+              <div class="slider-dots">
+                <button class="dot active" data-index="0"></button>
+                <button class="dot" data-index="1"></button>
+                <button class="dot" data-index="2"></button>
+              </div>
+              <button class="slider-btn next" aria-label="Sledeća slika"><i data-lucide="chevron-right"></i></button>
+            </div>
+          </div>
+          <p class="slider-caption">Studenički kamen kao premium završna obloga u realnom prostoru.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PRODUCTS / PONUDA ======== -->
+  <section class="section products" id="products">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-kicker">Naša ponuda</span>
+        <h2 class="section-title">Ponuda <span class="gold-text">kamena</span></h2>
+        <p class="section-subtitle">
+          Prirodni dekorativni studenički kamen za zid, fasadu, dvorište i enterijer. Sečenje i obrada po meri. Cena je na upit.
+        </p>
+      </div>
+
+      <div class="product-chips reveal-up">
+        <span class="chip glass-pill">Kamen za zid</span>
+        <span class="chip glass-pill">Dekorativni kamen</span>
+        <span class="chip glass-pill">Prirodni studenički kamen</span>
+        <span class="chip glass-pill">Kamen za dvorište</span>
+        <span class="chip glass-pill">Lomljeni / sečene ploče</span>
+        <span class="chip glass-pill">Suvi zid</span>
+      </div>
+
+      <div class="product-grid">
+        <!-- Product 1 -->
+        <article class="product-card glass-card reveal-up">
+          <div class="product-img">
+            <img src="./slika6.jpg" alt="Bakarna Studenica – studenički kamen za zid" loading="lazy">
+            <div class="product-overlay">
+              <span class="product-badge">Popular</span>
+            </div>
+          </div>
+          <div class="product-body">
+            <h3>Bakarna Studenica</h3>
+            <p>Topao ton, odličan za zidove i detalje u enterijeru i eksterijeru.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: zid / fasada</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card glass-card reveal-up delay-1">
+          <div class="product-img">
+            <img src="./slika10.jpg" alt="Braon studenica – dekorativni kamen" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Braon studenica</h3>
+            <p>Čist i moderan izgled za enterijer, stepeništa i dekorativne površine.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: enterijer</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card glass-card reveal-up delay-2">
+          <div class="product-img">
+            <img src="./slika5.jpg" alt="Beli tigar – studenički kamen za zid" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Beli tigar</h3>
+            <p>Prirodna tekstura, idealna za dekorativne zidove i rustične ambijente.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: zid / dvorište</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="product-card glass-card reveal-up">
+          <div class="product-img">
+            <img src="./slika8.jpg" alt="Sečene ploče – studenički kamen za fasadu" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Sečene ploče</h3>
+            <p>Precizne dimenzije, čist spoj i premium završnica za fasade i enterijer.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: fasada / enterijer</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="product-card glass-card reveal-up delay-1">
+          <div class="product-img">
+            <img src="./stub.png" alt="Suvi zid – stubovi i detalji" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Suvi zid</h3>
+            <p>Stubovi, lajsne i detalji po meri — za projekte koji traže završni „premium" utisak.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: detalji</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="product-card glass-card reveal-up delay-2">
+          <div class="product-img">
+            <img src="./pescar.jpg" alt="Pescar – studenički kamen za dvorište" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Pescar</h3>
+            <p>Prirodno uklapanje u dvorišta i terene, stabilno i dekorativno rešenje.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: dvorište</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 7 -->
+        <article class="product-card glass-card reveal-up delay-2">
+          <div class="product-img">
+            <img src="./zuti tigar lomljeni.jpg" alt="Zuti tigar lomljeni – studenički kamen za dvorište" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Zuti tigar - lomljeni</h3>
+            <p>Studenički kamen u klasiknom stilu, idealan za dvorišta i enterijere.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: dvorište</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 8 -->
+        <article class="product-card glass-card reveal-up delay-2">
+          <div class="product-img">
+            <img src="./Lomljeni kamen-Kavala.jpg" alt="Lomljeni kamen kavala – studenički kamen za dvorište" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Lomljeni kamen kavala</h3>
+            <p>Studenički kamen u klasiknom stilu, idealan za dvorišta i enterijere.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: dvorište</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 9 -->
+        <article class="product-card glass-card reveal-up delay-2">
+          <div class="product-img">
+            <img src="./pocetna-zutitigar.jpg" alt="Žuti tigar – studenički kamen za enterijer" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Žuti tigar</h3>
+            <p>Studenički kamen u žutom tonu, idealan za enterijere i izrađen u klasiknom stilu.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: enterijer</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 10 -->
+        <article class="product-card glass-card reveal-up delay-2">
+          <div class="product-img">
+            <img src="./lomljena braon studenica.jpg" alt="Lomljena braon studenica – studenički kamen za enterijer" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Lomljena braon studenica</h3>
+            <p>Studenički kamen u belom tonu, idealan za enterijere i izrađen u klasiknom stilu.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: enterijer</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+        <!-- Product 11 -->
+        <article class="product-card glass-card reveal-up delay-2">
+          <div class="product-img">
+            <img src="./lomljeni bakar.jpg" alt="Lomljena bakarna studenica – studenički kamen za enterijer" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3>Lomljena bakarna studenica</h3>
+            <p>Studenički kamen u belom tonu, idealan za enterijere i izrađen u klasiknom stilu.</p>
+            <div class="product-meta">
+              <span class="product-use"><i data-lucide="layout" class="pmeta-icon"></i> Namena: enterijer</span>
+              <span class="product-price">Cena: na upit</span>
+            </div>
+          </div>
+        </article>
+
+
+      </div>
+
+      <!-- How to choose + CTA -->
+      <div class="product-bottom reveal-up">
+        <div class="tipbox glass-card">
+          <div class="tipbox-icon"><i data-lucide="lightbulb"></i></div>
+          <h3>Kako odabrati studenički kamen</h3>
+          <ul>
+            <li>Pošaljite sliku prostora i navedite da li je zid/fasada/dvorište/enterijer.</li>
+            <li>Napišite okvirnu kvadraturu i željeni ton (svetliji/tamniji).</li>
+            <li>Po potrebi radimo sečenje i obradu po meri.</li>
+          </ul>
+        </div>
+        <div class="product-cta glass-card">
+          <h3>Treba vam predlog i ponuda?</h3>
+          <p>Pošaljite upit — dobijate preporuku rešenja i cenu na upit prema vrsti studeničkog kamena i količini.</p>
+          <div class="product-cta-actions">
+            <a class="btn btn-gold" href="#contact">Pošaljite upit</a>
+            <a class="btn btn-outline" href="tel:+381641528929">Pozovite</a>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- ======== GALLERY / NAŠI RADOVI ======== -->
+  <section class="section gallery" id="gallery">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-kicker">Portfolio</span>
+        <h2 class="section-title">Naši <span class="gold-text">radovi</span></h2>
+        <p class="section-subtitle">
+          Realne fotografije sa terena • Projekti sa studeničkim kamenom
+        </p>
+      </div>
 
-    <footer id="footer" class="site-footer">
-  <div class="footer-inner">
-    
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <!-- Ako imaš logo sliku, ubaci je -->
-          <!-- <img src="logo.png" alt="Neolit Stone" /> -->
-          <span class="footer-brand-name">Neolit Stone</span>
+      <div class="gallery-filters reveal-up">
+        <button class="filter-btn active" data-filter="all">Sve</button>
+        <button class="filter-btn" data-filter="zidovi">Zidovi</button>
+        <button class="filter-btn" data-filter="fasade">Fasade</button>
+        <button class="filter-btn" data-filter="dvorista">Dvorišta</button>
+        <button class="filter-btn" data-filter="enterijer">Enterijer</button>
+        <button class="filter-btn" data-filter="projekti">Projekti</button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <figure class="gallery-item" data-category="projekti" data-full="./posle.jpg" data-caption="Projekat: premium enterijer / obloga zida studeničkim kamenom">
+          <img src="./posle.jpg" loading="lazy" alt="Studenički kamen – projekat hotel">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Premium projekat</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="zidovi" data-full="./rad3.png" data-caption="Zid: dekorativni studenički kamen – prirodna tekstura">
+          <img src="./rad3.png" loading="lazy" alt="Dekorativni studenički kamen za zid">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Dekorativni zid</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="enterijer" data-full="./rad13.jpg" data-caption="Enterijer: studenički kamen kao dekorativni detalj">
+          <img src="./rad13.jpg" loading="lazy" alt="Studenički kamen u enterijeru">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Enterijer</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="fasade" data-full="./rad14.jpg" data-caption="Fasada: studenički kamen kao završna obloga">
+          <img src="./rad14.jpg" loading="lazy" alt="Studenički kamen za fasadu">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Fasada</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="dvorista" data-full="./rad10.jpg" data-caption="Dvorište: studenički kamen – obloga i staze">
+          <img src="./rad10.jpg" loading="lazy" alt="Studenički kamen za dvorište">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Dvorište</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="zidovi" data-full="./rad6.png" data-caption="Zid: lomljeni studenički kamen – rustičan izgled">
+          <img src="./rad6.png" loading="lazy" alt="Lomljeni studenički kamen za zid">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Lomljeni kamen</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="zidovi" data-full="./rad7.png" data-caption="Zid: sečene ploče studeničkog kamena – čist spoj">
+          <img src="./rad7.png" loading="lazy" alt="Sečene ploče studeničkog kamena za zid">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Sečene ploče</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="dvorista" data-full="./rad8.png" data-caption="Dvorište: studenički kamen – suvi zid / ograda">
+          <img src="./rad8.png" loading="lazy" alt="Suvi zid – studenički kamen za dvorište">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Suvi zid</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="enterijer" data-full="./slika2.jpg" data-caption="Enterijer: dekorativni studenički kamen – zid">
+          <img src="./slika2.jpg" loading="lazy" alt="Studenički kamen u enterijeru – dekorativni zid">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Enterijer zid</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="fasade" data-full="./rad9.jpg" data-caption="Fasada: prirodni studenički kamen kao obloga">
+          <img src="./rad9.jpg" loading="lazy" alt="Studenički kamen za fasadu – dekorativni">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Fasada obloga</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="projekti" data-full="./rad12.jpg" data-caption="Projekat: studenički kamen – spoljašnja primena">
+          <img src="./rad12.jpg" loading="lazy" alt="Studenički kamen – projekat spoljašnja primena">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Spoljašnja primena</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gallery-item" data-category="projekti" data-full="./rad11.jpg" data-caption="Projekat: kombinacija tonova studeničkog kamena">
+          <img src="./rad11.jpg" loading="lazy" alt="Studenički kamen – kombinacija tonova">
+          <figcaption class="gallery-overlay">
+            <i data-lucide="maximize-2"></i>
+            <span>Kombinacija tonova</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-backdrop"></div>
+      <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Zatvori"><i data-lucide="x"></i></button>
+        <button class="lightbox-prev" aria-label="Prethodna"><i data-lucide="chevron-left"></i></button>
+        <div class="lightbox-media">
+          <img id="lightboxImg" alt="">
         </div>
+        <button class="lightbox-next" aria-label="Sledeća"><i data-lucide="chevron-right"></i></button>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+    </div>
+  </section>
 
-        <p class="footer-desc">
-          Prirodni dekorativni studenički kamen • sečenje i obrada po meri • cena na upit.
+  <!-- ======== INVESTORS ======== -->
+  <section class="section investors" id="investors">
+    <div class="container">
+      <div class="invest-card glass-card-dark reveal-up">
+        <span class="invest-badge">Ponuda za investitore</span>
+        <h2 class="section-title">Posebni uslovi za <span class="gold-text">veće projekte</span> i kupovine</h2>
+        <p class="invest-lead">
+          Za hotele, građevinske firme, arhitekte i velike projekte pripremamo ponudu po meri.
+          Cena studeničkog kamena je na upit i zavisi od vrste kamena, obrade i količine.
         </p>
 
-        <div class="footer-cta">
-          <a class="btn btn-primary" href="tel:+381641528929">Pozovite</a>
-          <a class="btn btn-secondary" href="#kontakt">Pošaljite upit</a>
+        <div class="invest-grid">
+          <div class="invest-item glass-card">
+            <div class="invest-icon"><i data-lucide="percent"></i></div>
+            <h3>Posebni uslovi za količine</h3>
+            <p>Popusti i logistika za veće narudžbine studeničkog kamena, uz jasno definisane rokove.</p>
+          </div>
+          <div class="invest-item glass-card">
+            <div class="invest-icon"><i data-lucide="zap"></i></div>
+            <h3>Prioritetna proizvodnja</h3>
+            <p>Rezervisani termini i brža realizacija za investitorske projekte.</p>
+          </div>
+          <div class="invest-item glass-card">
+            <div class="invest-icon"><i data-lucide="scissors"></i></div>
+            <h3>Sečenje i obrada po meri</h3>
+            <p>Dimenzije i završna obrada prilagođeni projektu (enterijer/eksterijer).</p>
+          </div>
+          <div class="invest-item glass-card">
+            <div class="invest-icon"><i data-lucide="compass"></i></div>
+            <h3>Podrška u planiranju</h3>
+            <p>Preporuka vrste kamena, količina i detalja ugradnje, uz posvećenu komunikaciju.</p>
+          </div>
         </div>
+
+        <div class="invest-actions">
+          <a class="btn btn-gold" href="#contact">Kontaktirajte nas za investitorsku ponudu</a>
+          <a class="btn btn-glass" href="#contact">Zakažite razgovor</a>
+        </div>
+
+        <p class="invest-note">
+          Za profesionalce: arhitekte, dizajnere i izvođače radova — pošaljite nacrte i fotografije, mi Vam vraćamo predlog rešenja i cenu.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FAQ ======== -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-kicker">Pitanja i odgovori</span>
+        <h2 class="section-title">Česta <span class="gold-text">pitanja</span></h2>
+        <p class="section-subtitle">
+          Odgovori na najčešća pitanja o dekorativnom studeničkom kamenu, isporuci i izradi po meri.
+        </p>
       </div>
 
-      <div class="footer-col">
-        <h4>Brzi linkovi</h4>
-        <a href="#onama">O nama</a>
-        <a href="#proizvodi">Proizvodi</a>
-        <a href="#nasi-radovi">Naši radovi</a>
-        <a href="#kontakt">Kontakt</a>
+      <div class="faq-list reveal-up">
+        <details class="faq-item glass-card">
+          <summary>
+            <span>Koji studenički kamen je najbolji kao kamen za zid?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Najbolji izbor zavisi od prostora i željenog izgleda. Za moderan izgled često se biraju sečene ploče, dok lomljeni studenički kamen daje prirodniju teksturu. Pošaljite fotografiju zida i okvirnu kvadraturu — predložićemo rešenje.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-card">
+          <summary>
+            <span>Da li je studenički kamen pogodan za spoljašnju fasadu?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Da. Prirodni studenički kamen je čest izbor za fasade zbog postojanosti i izgleda. Preporuka zavisi od podloge, izloženosti vremenskim uslovima i tipa završne obrade.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-card">
+          <summary>
+            <span>Kako se održava dekorativni studenički kamen u dvorištu?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Održavanje je jednostavno: periodično pranje vodom i po potrebi blagim sredstvom. Kod jačeg zaprljanja može se koristiti pranje pod pritiskom (uz pažnju prema fugama i površini).</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-card">
+          <summary>
+            <span>Da li radite sečenje i obradu kamena po meri?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Da. Radimo sečenje i obradu prema dimenzijama i potrebama projekta (rez, format, završna obrada). Najbrže je da pošaljete skicu ili fotografije i napišete šta želite da postignete.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-card">
+          <summary>
+            <span>Kako ide isporuka i ugradnja studeničkog kamena?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Isporuka je prema dogovoru i zavisi od lokacije i količine. Ugradnju obično rade majstori izvođača za veće količine, dok za manje kvadrature tu uslugu nudimo i mi.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-card">
+          <summary>
+            <span>Koliko traje realizacija porudžbine?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Rok zavisi od vrste kamena, obrade i količine. Nakon upita i osnovnih informacija, dobićete okviran rok izrade i isporuke.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-card">
+          <summary>
+            <span>Da li je moguće poručiti veće količine studeničkog kamena (investitori)?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Da. Za investitorske projekte nudimo posebne uslove, prioritetnu izradu i ponudu prilagođenu projektu. Kontaktirajte nas sa specifikacijom i rokovima.</p>
+          </div>
+        </details>
+
+        <details class="faq-item glass-card">
+          <summary>
+            <span>Kako dobijam cenu za studenički kamen?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </summary>
+          <div class="faq-answer">
+            <p>Cena je na upit i zavisi od vrste kamena, završne obrade i količine. Pošaljite fotografije prostora, okvirnu kvadraturu i željeni stil — dobićete predlog i ponudu.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <span class="section-kicker">Stupite u kontakt</span>
+        <h2 class="section-title"><span class="gold-text">Kontakt</span></h2>
+        <p class="section-subtitle">
+          Pošaljite upit i dobićete predlog rešenja i cenu na upit (u zavisnosti od vrste studeničkog kamena i količine).
+        </p>
       </div>
 
-      <div class="footer-col">
-        <h4>Kontakt</h4>
-        <a href="tel:+381641528929">+381 64 152 8929</a>
-        <a href="mailto:info@neolitstone.rs">info@neolitstone.rs</a>
-        <span class="footer-muted">Studenica, Srbija</span>
+      <div class="contact-grid">
+        <div class="contact-left reveal-left">
+          <div class="contact-cards">
+            <a class="contact-card glass-card" href="tel:+381641528929" aria-label="Pozovite">
+              <div class="cc-icon"><i data-lucide="phone"></i></div>
+              <div class="cc-info">
+                <div class="cc-title">Telefon</div>
+                <div class="cc-value">064/152-8929</div>
+                <div class="cc-note">Pozovite za brzu konsultaciju</div>
+              </div>
+            </a>
+            <a class="contact-card glass-card" href="mailto:planojevicnenad@gmail.com" aria-label="Email">
+              <div class="cc-icon"><i data-lucide="mail"></i></div>
+              <div class="cc-info">
+                <div class="cc-title">Email</div>
+                <div class="cc-value">planojevicnenad@gmail.com</div>
+                <div class="cc-note">Pošaljite fotografije i dimenzije</div>
+              </div>
+            </a>
+            <a class="contact-card glass-card" href="https://www.instagram.com/nenad.neolitstone/" target="_blank" rel="noopener" aria-label="Instagram">
+              <div class="cc-icon"><i data-lucide="instagram"></i></div>
+              <div class="cc-info">
+                <div class="cc-title">Instagram</div>
+                <div class="cc-value">@nenad.neolitstone</div>
+                <div class="cc-note">Radovi i inspiracija</div>
+              </div>
+            </a>
+          </div>
 
-        <div class="footer-social">
-          <a href="#" aria-label="Instagram">IG</a>
-          <a href="#" aria-label="Facebook">FB</a>
-          <a href="#" aria-label="Viber">VB</a>
+          <form class="contact-form glass-card" id="contactForm">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="fullName">Ime i prezime</label>
+                <input id="fullName" name="fullName" type="text" placeholder="Unesite ime i prezime" required>
+              </div>
+              <div class="form-field">
+                <label for="phone">Telefon</label>
+                <input id="phone" name="phone" type="tel" placeholder="npr. 06x/xxx-xxxx" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="npr. ime@email.com" required>
+              </div>
+              <div class="form-field">
+                <label for="projectType">Tip projekta</label>
+                <select id="projectType" name="projectType" required>
+                  <option value="" selected disabled>Izaberite tip projekta</option>
+                  <option value="Zid">Zid</option>
+                  <option value="Fasada">Fasada</option>
+                  <option value="Dvorište">Dvorište</option>
+                  <option value="Enterijer">Enterijer</option>
+                  <option value="Investitorski projekat">Investitorski projekat</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="message">Poruka</label>
+              <textarea id="message" name="message" rows="5" placeholder="Napišite kvadraturu, željeni ton (svetliji/tamniji) i pošaljite slike prostora." required></textarea>
+            </div>
+            <div class="form-bottom">
+              <p class="form-note">
+                <i data-lucide="info" class="note-icon"></i>
+                Preporuka: Pošaljite 2–3 fotografije prostora i osnovne dimenzije — dobićete predlog rešenja i cenu na upit.
+              </p>
+              <button class="btn btn-gold btn-submit" type="submit">
+                <i data-lucide="send" class="btn-icon"></i>
+                Pošaljite upit
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="contact-right reveal-right">
+          <div class="map-wrap glass-card">
+            <div class="map-head">
+              <h3><i data-lucide="map-pin" class="map-icon"></i> Lokacija</h3>
+              <p>Studenica i okolina • Isporuka prema dogovoru</p>
+            </div>
+            <div class="map-frame">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5787.036463040741!2d20.506753088251532!3d43.51238481356273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4757b38ed1972f9b%3A0xc06bc73304c9b3af!2sNEOLIT%20STONE%20-Prirodni%20dekorativni%20kamen!5e0!3m2!1ssr!2srs!4v1739028723606!5m2!1ssr!2srs"
+                width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <span>© <span id="year"></span> Neolit Stone. Sva prava zadržana.</span>
-      <div class="footer-legal">
-        <a href="#">Politika privatnosti</a>
-        <a href="#">Uslovi korišćenja</a>
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg class="logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 13L18 6L29 13L18 20L7 13Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M7 22L18 15L29 22L18 29L7 22Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".7"/>
+            </svg>
+            <span class="footer-brand-name">Neolit Stone</span>
+          </div>
+          <p class="footer-desc">
+            Prirodni dekorativni studenički kamen • sečenje i obrada po meri • cena na upit.
+          </p>
+          <div class="footer-cta">
+            <a class="btn btn-gold btn-sm" href="tel:+381641528929">Pozovite</a>
+            <a class="btn btn-outline btn-sm" href="#contact">Pošaljite upit</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Brzi linkovi</h4>
+          <a href="#about">O nama</a>
+          <a href="#products">Ponuda</a>
+          <a href="#gallery">Naši radovi</a>
+          <a href="#contact">Kontakt</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="tel:+381641528929">+381 64 152 8929</a>
+          <a href="mailto:info@neolitstone.rs">info@neolitstone.rs</a>
+          <span class="footer-muted">Studenica, Srbija</span>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/nenad.neolitstone/" target="_blank" rel="noopener" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+            <a href="#" aria-label="Viber"><i data-lucide="message-circle"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> Neolit Stone. Sva prava zadržana.</span>
+        <div class="footer-legal">
+          <a href="#">Politika privatnosti</a>
+          <a href="#">Uslovi korišćenja</a>
+        </div>
       </div>
     </div>
+  </footer>
 
-  </div>
-</footer>
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Nazad na vrh">
+    <i data-lucide="chevron-up"></i>
+  </button>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-
-    
-
-    <!-- Uključivanje jQuery, Popper.js i Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Tvoj Custom JavaScript -->
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
