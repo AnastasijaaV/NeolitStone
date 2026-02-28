@@ -82,29 +82,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // ── Mobile Menu ──
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
+// ── Mobile Menu ──
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('nav');
 
-  hamburger.addEventListener('click', () => {
-    const isOpen = nav.classList.contains('open');
-    nav.classList.toggle('open');
-    hamburger.classList.toggle('active');
-    hamburger.setAttribute('aria-expanded', !isOpen);
-    document.body.style.overflow = isOpen ? '' : 'hidden';
+function openMenu() {
+  nav.classList.add('open');
+  hamburger.classList.add('active');
+  hamburger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+  document.body.classList.add('nav-open');
+}
+
+function closeMenu() {
+  nav.classList.remove('open');
+  hamburger.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  document.body.classList.remove('nav-open');
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = nav.classList.contains('open');
+  if (isOpen) closeMenu();
+  else openMenu();
+});
+
+// Close on link click
+nav.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    closeMenu();
   });
+});
 
-  // Close on link click
-  nav.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-  });
+// Close on outside click (klik van menija)
+document.addEventListener('click', (e) => {
+  if (!nav.classList.contains('open')) return;
 
-  // ── Active Nav Link on Scroll ──
+  const clickedInsideNav = nav.contains(e.target);
+  const clickedHamburger = hamburger.contains(e.target);
+  if (!clickedInsideNav && !clickedHamburger) {
+    closeMenu();
+  }
+});
+
+// Close on ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMenu();
+});
+
+// ── Active Nav Link on Scroll ──
   const sections = document.querySelectorAll('.section, .hero');
   const navLinks = document.querySelectorAll('.nav-link');
 
@@ -447,4 +474,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // ── FAQ Accordion (open one, close others) ──
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach((item) => {
+  item.addEventListener('toggle', () => {
+    if (!item.open) return; // reaguj samo kad se otvara
+
+    faqItems.forEach((other) => {
+      if (other !== item) other.removeAttribute('open');
+    });
+  });
+});
 });

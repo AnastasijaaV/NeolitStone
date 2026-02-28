@@ -478,7 +478,7 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: 12px;
-  z-index: 1001;
+  z-index: 10000;
 }
 
 .logo-icon {
@@ -554,7 +554,7 @@ ul, ol {
   flex-direction: column;
   gap: 5px;
   padding: 8px;
-  z-index: 1001;
+  z-index: 10000;
 }
 
 .hamburger span {
@@ -2160,8 +2160,12 @@ ul, ol {
 @media (max-width: 768px) {
   .nav {
     position: fixed;
-    inset: 0;
-    background: rgba(10, 10, 10, 0.95);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(10, 10, 10, 0.97);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     display: flex;
@@ -2169,13 +2173,15 @@ ul, ol {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.5s var(--ease-out);
-    z-index: 999;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease-out), visibility 0.4s var(--ease-out);
+    z-index: 9999;
   }
 
   .nav.open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 
   .nav-list {
@@ -2249,6 +2255,16 @@ ul, ol {
   .invest-actions {
     flex-direction: column;
     align-items: center;
+  }
+  
+  .invest-actions .btn {
+    width: 100%;
+    max-width: 360px;     
+    padding: 12px 16px;   
+    font-size: 0.85rem;   
+    white-space: normal; 
+    text-align: center;
+    line-height: 1.25;
   }
 
   .form-row {
